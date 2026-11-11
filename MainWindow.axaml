@@ -1,0 +1,206 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.openxmlformats.org/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Codec"
+        mc:Ignorable="d"
+        Width="1100" Height="468"
+        WindowStartupLocation="CenterScreen"
+        x:Class="Codec.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="Codec"
+        Background="{Binding BackgroundColor}"
+        Foreground="{Binding ForegroundColor}">
+
+    <Window.Styles>
+        <Style Selector="ListBox.chats ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#3F48CC"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style Selector="ListBox.chats ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#5a63d8"/>
+        </Style>
+        <Style Selector="ListBox.chats ListBoxItem:pointerover:not(:selected) /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#2a2a2a"/>
+        </Style>
+
+        <Style Selector="ListBox.messages ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#2a2a2a"/>
+        </Style>
+        <Style Selector="ListBox.messages ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#333333"/>
+        </Style>
+
+        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="BorderBrush" Value="#3F48CC"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="SelectionBrush" Value="#3F48CC"/>
+            <Setter Property="SelectionForegroundBrush" Value="White"/>
+            <Setter Property="CaretBrush" Value="White"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="220,*" RowDefinitions="*,Auto" Margin="14,14,14,8">
+
+        <Grid Grid.Column="0" Grid.Row="0" RowDefinitions="Auto,*" Margin="0,0,14,0">
+            <Button Grid.Row="0"
+                    Content="{Binding NewChatButtonText}"
+                    Command="{Binding NewChatCommand}"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    Background="#3F48CC"
+                    Foreground="White"
+                    FontSize="13"
+                    CornerRadius="6"
+                    Padding="12,8"
+                    Margin="0,0,0,10"/>
+
+            <Border Grid.Row="1"
+                    BorderBrush="#444444"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="4"
+                    Background="#141414">
+                <ListBox Classes="chats"
+                         ItemsSource="{Binding Chats}"
+                         SelectedItem="{Binding SelectedChat, Mode=TwoWay}"
+                         Background="Transparent"
+                         BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ChatItem">
+                            <Grid ColumnDefinitions="*,Auto"
+                                  Background="Transparent"
+                                  DoubleTapped="ChatItem_DoubleTapped">
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding Title}"
+                                           IsVisible="{Binding !IsEditing}"
+                                           Foreground="White"
+                                           FontSize="13"
+                                           VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis"/>
+
+                                <TextBox Grid.Column="0"
+                                         Text="{Binding EditTitle, Mode=TwoWay}"
+                                         IsVisible="{Binding IsEditing}"
+                                         MaxLength="40"
+                                         FontSize="13"
+                                         Padding="6,4"
+                                         MinHeight="0"
+                                         Loaded="RenameBox_Loaded"
+                                         KeyDown="RenameBox_KeyDown"
+                                         LostFocus="RenameBox_LostFocus"/>
+
+                                <Button Grid.Column="1"
+                                        Content="✎"
+                                        IsVisible="{Binding !IsEditing}"
+                                        Click="RenameButton_Click"
+                                        Background="Transparent"
+                                        Foreground="#aaaaaa"
+                                        BorderThickness="0"
+                                        Padding="6,2"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center"
+                                        ToolTip.Tip="{Binding $parent[Window].((vm:MainViewModel)DataContext).RenameTooltip}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="Auto, *, Auto">
+
+            <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" Margin="0,0,0,10">
+                <Button Grid.Column="0"
+                        Content="{Binding SettingsButtonText}"
+                        Command="{Binding OpenSettingsCommand}"
+                        Background="#252525"
+                        Foreground="White"
+                        BorderBrush="#3F48CC"
+                        FontSize="13"
+                        CornerRadius="6"
+                        VerticalAlignment="Center"
+                        Padding="12,6"/>
+
+                <TextBlock Grid.Column="1"
+                           Text="{Binding PromptHintText}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="17"
+                           FontWeight="SemiBold"/>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding CurrentDate}" FontSize="15" Foreground="#888888" HorizontalAlignment="Right"/>
+                    <TextBlock FontSize="15" Foreground="#888888" HorizontalAlignment="Right">
+                        <Run Text="Version" Foreground="#3F48CC"/>
+                        <Run Text=" 4.0 beta"/>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    BorderBrush="#444444"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="8"
+                    Background="#141414">
+                <ListBox Classes="messages"
+                         ItemsSource="{Binding Messages}"
+                         Background="Transparent"
+                         BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <SelectableTextBlock Text="{Binding}"
+                                                 SelectionBrush="#3F48CC"
+                                                 Foreground="White"
+                                                 FontSize="14"
+                                                 TextWrapping="Wrap"
+                                                 Margin="0,4"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
+            <Grid Grid.Row="2" ColumnDefinitions="*, Auto" Margin="0,10,0,0">
+                <TextBox Grid.Column="0"
+                         Text="{Binding InputMessage}"
+                         PlaceholderText="{Binding PlaceholderText}"
+                         Background="#1e1e1e"
+                         Foreground="White"
+                         BorderBrush="#3F48CC"
+                         FontSize="13"
+                         CornerRadius="6"
+                         VerticalContentAlignment="Center"
+                         Height="38"
+                         Margin="0,0,10,0">
+                    <TextBox.KeyBindings>
+                        <KeyBinding Gesture="Enter" Command="{Binding SendMessageCommand}" />
+                    </TextBox.KeyBindings>
+                </TextBox>
+
+                <Button Grid.Column="1"
+                        Content="{Binding SendButtonText}"
+                        Command="{Binding SendMessageCommand}"
+                        Background="#3F48CC"
+                        Foreground="White"
+                        FontSize="13"
+                        CornerRadius="6"
+                        Height="38"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Padding="18,0"/>
+            </Grid>
+        </Grid>
+
+        <TextBlock Grid.Column="1"
+                   Grid.Row="1"
+                   Text="{Binding Aifalse}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="12"
+                   Margin="0,6,0,0"
+                   TextWrapping="Wrap"/>
+    </Grid>
+</Window>

@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:Codec"
+        x:Class="Codec.MyNewWindow"
+        x:DataType="local:MyNewWindow"
+        Title="Настройки" Width="400" Height="300">
+
+    <StackPanel Margin="20" Spacing="10">
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,0,0,5">
+            <TextBlock Text="Version "
+                       FontSize="15"
+                       Foreground="#3F48CC"
+                       FontWeight="SemiBold"
+                       VerticalAlignment="Center"/>
+            <TextBlock x:Name="VersionText"
+                       Text="4.0 beta"
+                       Foreground="White"
+                       FontSize="14"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Button x:Name="ToggleBtn"
+                Content="Сменить тему"
+                FontSize="13"
+                BorderBrush="#3F48CC"
+                CornerRadius="6"
+                Click="ToggleBtn_Click"
+                HorizontalAlignment="Stretch"/>
+
+        <Button x:Name="LangBtn"
+                Content="{Binding ChangeButtonText}"
+                FontSize="13"
+                BorderBrush="#3F48CC"
+                CornerRadius="6"
+                Click="OnToggleLanguageClick"
+                HorizontalAlignment="Stretch"/>
+
+        <Button x:Name="CloseBtn"
+                Content="Закрыть"
+                FontSize="13"
+                BorderBrush="#3F48CC"
+                CornerRadius="6"
+                HorizontalAlignment="Stretch"/>
+    </StackPanel>
+</Window>

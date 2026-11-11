@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.openxmlformats.org/markup-compatibility/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Codec"
+        mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="240"
+        x:Class="Codec.LoginWindow"
+        x:DataType="vm:LoginViewModel"
+        Title="Codec - Авторизация" Width="360" Height="240"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E" Foreground="White">
+
+    <StackPanel Margin="20" Spacing="15" VerticalAlignment="Center">
+        <TextBlock Text="Добро пожаловать в Codec!" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="White"/>
+        
+        <TextBox Text="{Binding UsernameInput, Mode=TwoWay}"
+                 PlaceholderText="Введите ваше имя" />
+        
+        <TextBox Text="{Binding PasswordInput, Mode=TwoWay}"
+                 PlaceholderText="Введите пароль"
+                 PasswordChar="*"/>
+        
+        <Button Content="Войти / Создать аккаунт"
+                Command="{Binding LoginCommand}"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"/>
+    </StackPanel>
+</Window>
