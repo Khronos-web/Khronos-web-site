@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ControlDevice — Загрузка лаунчера</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ocean-backdrop" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container header-row">
+      <a class="logo" href="#">
+        <span class="logo-mark"></span>
+        <span>ControlDevice</span>
+      </a>
+      <nav class="nav">
+        <a href="#download">Скачать</a>
+        <a href="#how-it-works">Как работает</a>
+        <a
+          href="https://github.com/Khronos-web/RootDevice_v1.0/releases"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Релизы
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="download" class="hero">
+      <div class="container hero-layout">
+        <div class="hero-text">
+          <span class="pill">Официальный лаунчер • Windows x64</span>
+          <h1>Загрузите <span>ControlDevice</span> в один клик</h1>
+          <p class="subtitle">
+            Скачайте архив с лаунчером — он сам загрузит <code>ContrDevice.zip</code>
+            из релиза, установит приложение и создаст ярлык на рабочем столе.
+          </p>
+
+          <div class="cta-group">
+            <!-- Замени имя файла в ссылке на точное имя твоего zip-архива с лаунчером в релизе -->
+            <a
+              class="btn-download"
+              href="https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDeviceLauncher.zip"
+              download
+            >
+              Скачать лаунчер
+            </a>
+            <a class="btn-outline" href="#how-it-works">Шаги установки</a>
+          </div>
+
+          <p class="hint">
+            Источник архива приложения: релиз <code>v1.0</code> на GitHub.
+          </p>
+        </div>
+
+        <aside class="status-panel" aria-label="Схема установки">
+          <div class="panel-top">
+            <span class="panel-dot"></span>
+            <span class="panel-dot"></span>
+            <span class="panel-dot"></span>
+            <span class="panel-label">Цепочка загрузки</span>
+          </div>
+          <ul class="flow-list">
+            <li>
+              <span class="step-num">01</span>
+              <div>
+                <strong>Архив лаунчера</strong>
+                <small>Скачивается с этой страницы</small>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <div>
+                <strong>Загрузка ContrDevice.zip</strong>
+                <small>Лаунчер сам тянет релиз с GitHub</small>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <div>
+                <strong>Готово к запуску</strong>
+                <small>Файлы в AppData и ярлык на столе</small>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <h2>Как установить приложение</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>1. Скачайте лаунчер</h3>
+            <p>
+              Нажмите <strong>«Скачать лаунчер»</strong> и распакуйте полученный
+              ZIP-архив в удобную папку.
+            </p>
+          </article>
+          <article class="card">
+            <h3>2. Запустите установку</h3>
+            <p>
+              Откройте лаунчер и нажмите <strong>«Установить»</strong> — он сам
+              скачает и распакует <code>ContrDevice.zip</code>.
+            </p>
+          </article>
+          <article class="card">
+            <h3>3. Откройте ControlDevice</h3>
+            <p>
+              После завершения используйте ярлык <strong>ControlDevice</strong> на
+              рабочем столе или кнопку запуска в лаунчере.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <span>ControlDevice</span>
+      <a
+        href="https://github.com/Khronos-web/RootDevice_v1.0/releases"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub Releases
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
