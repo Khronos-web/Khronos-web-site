@@ -322,4 +322,35 @@ h2 {
   .hero {
     padding-top: 46px;
   }
+  .app-switcher {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.app-tab {
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--deep-sea);
+  color: var(--mist);
+  font-family: inherit;
+  font-size: 0.94rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.app-tab:hover {
+  color: var(--foam);
+  border-color: rgba(72, 202, 228, 0.48);
+}
+
+.app-tab.is-active {
+  background: linear-gradient(135deg, var(--teal), var(--cobalt));
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 180, 216, 0.25);
+}
 }
