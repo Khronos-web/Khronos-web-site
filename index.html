@@ -14,7 +14,7 @@
   <header class="header">
     <div class="container header-row">
       <a class="logo" href="#apps">
-        <span class="logo-mark"></span>
+        <img class="logo-img" src="icon.png" alt="Логотип TrenchHub" width="28" height="28" />
         <span>TrenchHub</span>
       </a>
       <nav class="nav">
@@ -52,7 +52,7 @@
             <a
               id="downloadLink"
               class="btn-download"
-              href="https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDeviceLauncher.zip"
+              href="https://github.com/TrenchHub/RootDevice_v1.0/releases/download/v1.0/ContrDev.launcher.zip"
               download
             >
               Скачать лаунчер ControlDevice
@@ -61,7 +61,7 @@
           </div>
 
           <p id="releaseHint" class="hint">
-            Выбрано: <strong>ControlDevice</strong> • Пакет: <code>ContrDevice.zip</code> • Ярлык на рабочий стол создаётся автоматически.
+            Выбрано: <strong>ControlDevice</strong> • Пакет: <code>ContrDev.launcher.zip</code> • Ярлык на рабочий стол создаётся автоматически.
           </p>
         </div>
 
@@ -84,7 +84,7 @@
               <span class="step-num">02</span>
               <div>
                 <strong>Распаковка в AppData</strong>
-                <small id="flowArchiveDesc">Устанавливает пакет ContrDevice.zip в систему</small>
+                <small id="flowArchiveDesc">Устанавливает пакет ContrDev.launcher.zip в систему</small>
               </div>
             </li>
             <li>
@@ -184,17 +184,17 @@
     const APPS = {
       controldevice: {
         title: "ControlDevice",
-        archive: "ContrDevice.zip",
-        downloadUrl: "https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDeviceLauncher.zip",
+        archive: "ContrDev.launcher.zip",
+        downloadUrl: "https://github.com/TrenchHub/RootDevice_v1.0/releases/download/v1.0/ContrDev.launcher.zip",
         buttonText: "Скачать лаунчер ControlDevice",
-        archiveDesc: "Устанавливает пакет ContrDevice.zip в систему",
+        archiveDesc: "Устанавливает пакет ContrDev.launcher.zip в систему",
         shortcutDesc: "Создаёт ярлык ControlDevice с фирменной иконкой"
       },
       internetmonitor: {
         title: "InternetMonitor",
         archive: "InternetMonitor.zip",
-        downloadUrl: "https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/InternetMonitorLauncher.zip",
-        buttonText: "Скачать лаунчер InternetMonitor",
+        downloadUrl: "https://github.com/TrenchHub/RootDevice_v1.0/releases/download/v1.0/InternetMonitor.zip",
+        buttonText: "Скачать InternetMonitor",
         archiveDesc: "Устанавливает пакет InternetMonitor.zip в систему",
         shortcutDesc: "Создаёт ярлык InternetMonitor с фирменной иконкой"
       }
