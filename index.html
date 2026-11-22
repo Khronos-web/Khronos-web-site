@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ControlDevice — Загрузка лаунчера</title>
- 
-  <link rel="icon" href="ContrDevice.logo.ico" />
+  <title>Центр загрузок — Лаунчер приложений</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,48 +11,53 @@
 
   <header class="header">
     <div class="container header-row">
-      <a class="logo" href="#">
+      <a class="logo" href="#apps">
         <span class="logo-mark"></span>
-        <span>ControlDevice</span>
+        <span>AppLauncher</span>
       </a>
       <nav class="nav">
+        <a href="#apps">Приложения</a>
         <a href="#download">Скачать</a>
         <a href="#how-it-works">Как работает</a>
-        <a
-          href="https://github.com/Khronos-web/RootDevice_v1.0/releases"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Релизы
-        </a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="download" class="hero">
+    <section id="apps" class="hero">
       <div class="container hero-layout">
         <div class="hero-text">
-          <span class="pill">Официальный лаунчер • Windows x64</span>
-          <h1>Загрузите <span>ControlDevice</span> в один клик</h1>
+          <span class="pill">Единый лаунчер • Windows x64</span>
+          <h1>Выберите приложение и установите в <span>один клик</span></h1>
           <p class="subtitle">
-            Скачайте архив с лаунчером — он сам загрузит <code>ContrDevice.zip</code>
-            из релиза, установит приложение и создаст ярлык на рабочем столе.
+            Скачайте лаунчер — он сам подберёт актуальный сетевой адрес, загрузит
+            нужный пакет из каталога релизов, установит программу и создаст ярлык с
+            иконкой на рабочем столе.
           </p>
 
-          <div class="cta-group">
+          <div class="app-switcher" role="tablist" aria-label="Выбор приложения">
+            <button type="button" class="app-tab is-active" data-app="controldevice">
+              ControlDevice
+            </button>
+            <button type="button" class="app-tab" data-app="internetmonitor">
+              InternetMonitor
+            </button>
+          </div>
+
+          <div id="download" class="cta-group">
             <a
+              id="downloadLink"
               class="btn-download"
-              href="https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDev.launcher.zip"
+              href="https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDeviceLauncher.zip"
               download
             >
-              Скачать лаунчер
+              Скачать лаунчер ControlDevice
             </a>
             <a class="btn-outline" href="#how-it-works">Шаги установки</a>
           </div>
 
-          <p class="hint">
-            Источник архива приложения: релиз <code>v1.0</code> на GitHub.
+          <p id="releaseHint" class="hint">
+            Выбрано: <strong>ControlDevice</strong> • Пакет: <code>ContrDevice.zip</code> • Ярлык на рабочий стол создаётся автоматически.
           </p>
         </div>
 
@@ -63,28 +66,28 @@
             <span class="panel-dot"></span>
             <span class="panel-dot"></span>
             <span class="panel-dot"></span>
-            <span class="panel-label">Цепочка загрузки</span>
+            <span class="panel-label">Цепочка установки</span>
           </div>
-          <ul class="flow-list">
+          <ul class="flow-list" id="flowList">
             <li>
               <span class="step-num">01</span>
               <div>
-                <strong>Архив лаунчера</strong>
-                <small>Скачивается с этой страницы</small>
+                <strong>Лаунчер и автопоиск адреса</strong>
+                <small>Сам определяет активный IP/шлюз и скачивает нужный архив</small>
               </div>
             </li>
             <li>
               <span class="step-num">02</span>
               <div>
-                <strong>Загрузка ContrDevice.zip</strong>
-                <small>Лаунчер сам тянет релиз с GitHub</small>
+                <strong>Распаковка в AppData</strong>
+                <small id="flowArchiveDesc">Устанавливает пакет ContrDevice.zip в систему</small>
               </div>
             </li>
             <li>
               <span class="step-num">03</span>
               <div>
-                <strong>Готово к запуску</strong>
-                <small>Файлы в AppData и ярлык на столе</small>
+                <strong>Ярлык на рабочем столе</strong>
+                <small id="flowShortcutDesc">Создаёт ярлык ControlDevice с фирменной иконкой</small>
               </div>
             </li>
           </ul>
@@ -97,24 +100,24 @@
         <h2>Как установить приложение</h2>
         <div class="grid-3">
           <article class="card">
-            <h3>1. Скачайте лаунчер</h3>
+            <h3>1. Выберите программу и скачайте</h3>
             <p>
-              Нажмите <strong>«Скачать лаунчер»</strong> и распакуйте полученный
-              ZIP-архив в удобную папку.
+              Выберите <strong>ControlDevice</strong> или <strong>InternetMonitor</strong>,
+              нажмите кнопку загрузки и распакуйте ZIP-архив лаунчера.
             </p>
           </article>
           <article class="card">
             <h3>2. Запустите установку</h3>
             <p>
-              Откройте лаунчер и нажмите <strong>«Установить»</strong> — он сам
-              скачает и распакует <code>ContrDevice.zip</code>.
+              Откройте лаунчер и нажмите <strong>«Установить»</strong> — он сам найдёт
+              сетевой адрес, скачает архив и развернёт файлы в <code>AppData</code>.
             </p>
           </article>
           <article class="card">
-            <h3>3. Откройте ControlDevice</h3>
+            <h3>3. Запускайте с рабочего стола</h3>
             <p>
-              После завершения используйте ярлык <strong>ControlDevice</strong> на
-              рабочем столе или кнопку запуска в лаунчере.
+              После завершения на рабочем столе появится готовый ярлык с иконкой
+              выбранного приложения. Новые релизы можно будет добавить позже.
             </p>
           </article>
         </div>
@@ -124,15 +127,52 @@
 
   <footer class="footer">
     <div class="container footer-row">
-      <span>ControlDevice</span>
-      <a
-        href="https://github.com/Khronos-web/RootDevice_v1.0/releases"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub Releases
-      </a>
+      <span>AppLauncher • ControlDevice &amp; InternetMonitor</span>
+      <a href="#apps">К выбору приложений</a>
     </div>
   </footer>
+
+  <script>
+    const APPS = {
+      controldevice: {
+        title: "ControlDevice",
+        archive: "ContrDevice.zip",
+        downloadUrl: "https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/ContrDeviceLauncher.zip",
+        buttonText: "Скачать лаунчер ControlDevice",
+        archiveDesc: "Устанавливает пакет ContrDevice.zip в систему",
+        shortcutDesc: "Создаёт ярлык ControlDevice с фирменной иконкой"
+      },
+      internetmonitor: {
+        title: "InternetMonitor",
+        archive: "InternetMonitor.zip",
+        downloadUrl: "https://github.com/Khronos-web/RootDevice_v1.0/releases/download/v1.0/InternetMonitorLauncher.zip",
+        buttonText: "Скачать лаунчер InternetMonitor",
+        archiveDesc: "Устанавливает пакет InternetMonitor.zip в систему",
+        shortcutDesc: "Создаёт ярлык InternetMonitor с фирменной иконкой"
+      }
+    };
+
+    const tabs = document.querySelectorAll(".app-tab");
+    const downloadLink = document.getElementById("downloadLink");
+    const releaseHint = document.getElementById("releaseHint");
+    const flowArchiveDesc = document.getElementById("flowArchiveDesc");
+    const flowShortcutDesc = document.getElementById("flowShortcutDesc");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const key = tab.dataset.app;
+        const app = APPS[key];
+        if (!app) return;
+
+        tabs.forEach((t) => t.classList.toggle("is-active", t === tab));
+        downloadLink.href = app.downloadUrl;
+        downloadLink.textContent = app.buttonText;
+        flowArchiveDesc.textContent = app.archiveDesc;
+        flowShortcutDesc.textContent = app.shortcutDesc;
+        releaseHint.innerHTML =
+          `Выбрано: <strong>${app.title}</strong> • Пакет: <code>${app.archive}</code> • Ярлык на рабочий стол создаётся автоматически.`;
+      });
+    });
+  </script>
 </body>
 </html>
